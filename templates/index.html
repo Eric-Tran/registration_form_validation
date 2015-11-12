@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }} ">
+</head>
+<body>
+	<div id = 'formwrap'>
+		<h1>Registration Form</h1>
+		<p>* are fields that are required</p>
+		{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<p style='color:red'>{{message}}</p>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+		<form action='/process' method = 'post'>
+			*Email: <input type='text' name='email'>
+			<br/>
+			*First Name: <input type='text' name='first_name'>
+			<br/>
+			*Last Name: <input type='text' name='last_name'>
+			<br/>
+			*Password: <input type='password' name='password'>
+			<br/>
+			*Confirm Password: <input type='password' name ='confirm_password'>
+			<br/>
+			<input type='submit' name='submit'>
+		</form>
+	</div>
+</body>
+</html>
